@@ -1,0 +1,21 @@
+# Upsun configuration, generated using AI at: 2026-04-23T21:12:55.425Z
+# AI can make mistakes. Please modify this file to suit your needs.
+applications:
+  akeneo:
+    type: php:8.5
+    build:
+      flavor: none
+    hooks:
+      build: |
+        set -ex
+        composer install --no-progress --no-interaction --optimize-autoloader --no-dev
+    web:
+      locations:
+        /:
+          root: public
+          passthru: /index.php
+    variables:
+      php:
+        memory_limit: 256M
+        max_execution_time: 300
+        upload_max_filesize: 10M
